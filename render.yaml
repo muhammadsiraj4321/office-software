@@ -1,0 +1,13 @@
+services:
+  - type: static_site
+    name: office-software-frontend
+    rootDir: frontend-react
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE
+        value: https://office-software-3-jqno.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

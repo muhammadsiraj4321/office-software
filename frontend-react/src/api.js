@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE || 'http://localhost:3002/api';
+const API_BASE = import.meta.env.VITE_API_BASE || window.API_BASE || 'http://localhost:3002/api';
 
 async function api(path, { method = 'GET', body, token } = {}) {
   const headers = { 'Content-Type': 'application/json' };

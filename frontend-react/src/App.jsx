@@ -92,14 +92,16 @@ export default function App() {
       <div className="flex flex-col min-h-screen">
         <div className="topbar">
           <div className="inner">
-            <div className="flex items-center gap-2">
+            <div className="left flex items-center gap-2">
               {/* Hamburger button (visible on mobile/tablet) */}
               <label htmlFor="nav-toggle" className="hamburger-btn" title="Open menu" aria-label="Open menu">
                 <span aria-hidden>☰</span>
               </label>
               <div className="text-sm text-slate-500">{user?.name || 'User'}</div>
             </div>
-            <div className="flex items-center gap-3">
+            {/* App name centered on mobile/tablet only (hidden on desktop) */}
+            <div className="center app-name-mobile lg:hidden font-semibold">Al Dhab Engraving</div>
+            <div className="right flex items-center gap-3">
               <button
                 className="btn-outline rounded-full w-9 h-9 p-0 flex items-center justify-center"
                 onClick={toggleTheme}
@@ -110,7 +112,7 @@ export default function App() {
                   {theme === 'light' ? '🌙' : '☀️'}
                 </span>
               </button>
-              <div className="text-sm text-slate-500">{new Date().toLocaleDateString()}</div>
+              <div className="date text-sm text-slate-500">{new Date().toLocaleDateString()}</div>
               <button className="btn btn-outline" onClick={logout}>Logout</button>
             </div>
           </div>

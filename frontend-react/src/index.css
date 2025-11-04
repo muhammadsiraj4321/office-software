@@ -163,6 +163,19 @@ body {
 @media (min-width: 768px){
   .topbar .inner .text-slate-500 { font-size: 1.125rem; /* ~18px */ }
 }
+/* Tablet/Mobile: layout the topbar into left/center/right to avoid overlaps */
+@media (max-width: 1024px){
+  .topbar .inner{ display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .5rem; }
+  .topbar .inner .left{ min-width: 0; }
+  .topbar .inner .right{ min-width: 0; justify-self: end; }
+  .topbar .inner .center.app-name-mobile{ display: block; text-align: center; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* Hide date on smaller screens to keep bar compact */
+  .topbar .inner .date{ display: none; }
+}
+@media (max-width: 767px){
+  .topbar .inner .center.app-name-mobile{ font-size: .95rem; }
+  .topbar .inner .right .btn{ font-size: .8rem; padding: .4rem .6rem; }
+}
 
 /* Cards & controls */
 .card {
@@ -211,6 +224,21 @@ body {
   font-weight: 700;
   color: #93c5fd;
   opacity: .9;
+}
+/* Responsive: reduce button sizes on tablet/mobile only */
+@media (max-width: 1024px){
+  .btn, .btn-outline{
+    font-size: .85rem;           /* slightly smaller text */
+    padding: .45rem .7rem;       /* reduce width/height via padding */
+    border-radius: .5rem;        /* tighter radius to match scale */
+    gap: .4rem;                  /* smaller icon/text spacing if any */
+  }
+}
+@media (max-width: 767px){
+  .btn, .btn-outline{
+    font-size: .8rem;            /* smaller on phones */
+    padding: .4rem .6rem;        /* further reduce for phone */
+  }
 }
 .input {
   @apply w-full rounded-lg border border-slate-600 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
@@ -324,6 +352,25 @@ main .container h1 {
 @media (max-width: 767px){
   .grid.md\:grid-cols-4 { grid-template-columns: 1fr; }
 }
+/* Make other common grids responsive (tablet -> 2 cols, mobile -> 1 col) */
+@media (max-width: 1024px){
+  .grid.md\:grid-cols-3 { grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; }
+  .grid.md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; }
+}
+@media (max-width: 767px){
+  .grid.md\:grid-cols-3 { grid-template-columns: 1fr; }
+  .grid.md\:grid-cols-2 { grid-template-columns: 1fr; }
+}
+/* Prevent overlaps in dense card toolbars by allowing wrap */
+@media (max-width: 1024px){
+  .card .flex{ flex-wrap: wrap; gap: .5rem; }
+}
+/* Tables: enable safe horizontal scrolling on small screens */
+@media (max-width: 1024px){
+  .table{ display: block; width: 100%; overflow-x: auto; }
+}
+/* Images: scale down responsively */
+img{ max-width: 100%; height: auto; }
 @media (max-width: 1024px){
   .card select.input, .card .input, .card select, .card input{ font-size: .95rem; padding-top: .5rem; padding-bottom: .5rem; }
 }

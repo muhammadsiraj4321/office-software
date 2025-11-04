@@ -12,6 +12,7 @@ import ActivityPage from './pages/ActivityPage.jsx';
 import ProjectsSummary from './pages/ProjectsSummary.jsx';
 import ProjectDetails from './pages/ProjectDetails.jsx';
 import MaterialDeliveryPage from './pages/MaterialDeliveryPage.jsx';
+import MobileDropdownNav from './components/MobileDropdownNav.jsx';
 import useAuth from './store/auth.js';
 import { canSeeDocuments } from './utils/rbac.js'
 
@@ -102,6 +103,8 @@ export default function App() {
             {/* App name centered on mobile/tablet only (hidden on desktop) */}
             <div className="center app-name-mobile lg:hidden font-semibold">Al Dhab Engraving</div>
             <div className="right flex items-center gap-3">
+              {/* Mobile/Tablet dropdown menu in top-right (desktop hidden) */}
+              <MobileDropdownNav />
               <button
                 className="btn-outline rounded-full w-9 h-9 p-0 flex items-center justify-center"
                 onClick={toggleTheme}

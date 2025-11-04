@@ -1,5 +1,6 @@
 services:
-  - type: static_site
+  - type: web
+    env: static
     name: office-software-frontend
     rootDir: frontend-react
     buildCommand: npm ci && npm run build
